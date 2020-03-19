@@ -5,9 +5,10 @@
 # https://github.com/shadowsocks/simple-obfs
 # https://github.com/shadowsocks/v2ray-plugin
 
-FROM alpine:latest
+FROM --platform=${TARGETPLATFORM} alpine:latest
 LABEL maintainer="Teddysun <i@teddysun.com>"
 
+ARG TARGETPLATFORM
 WORKDIR /root
 COPY v2ray-plugin.sh /root/v2ray-plugin.sh
 COPY config_sample.json /etc/shadowsocks-libev/config.json
@@ -40,7 +41,7 @@ RUN set -ex \
 	&& cd /root \
 	&& rm -rf /root/obfs /root/libev \
 	&& chmod +x /root/v2ray-plugin.sh \
-	&& /root/v2ray-plugin.sh \
+	&& /root/v2ray-plugin.sh "${TARGETPLATFORM}" \
 	&& rm -f /root/v2ray-plugin.sh
 
 VOLUME /etc/shadowsocks-libev

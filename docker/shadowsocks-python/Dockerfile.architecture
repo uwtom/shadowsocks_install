@@ -3,7 +3,7 @@
 # Reference URL:
 # https://github.com/shadowsocks/shadowsocks/tree/master
 
-FROM python:3.7-alpine
+FROM --platform=$TARGETPLATFORM python:3.7-alpine
 LABEL maintainer="Teddysun <i@teddysun.com>"
 
 RUN set -ex \
