@@ -2,12 +2,13 @@
 #
 # This is a Shell script for shadowsocks-rust based alpine with Docker image
 # 
-# Copyright (C) 2019 - 2020 Teddysun <i@teddysun.com>
+# Copyright (C) 2019 - 2021 Teddysun <i@teddysun.com>
 #
 # Reference URL:
 # https://github.com/shadowsocks/shadowsocks-rust
-# https://github.com/shadowsocks/simple-obfs
 # https://github.com/shadowsocks/v2ray-plugin
+# https://github.com/teddysun/v2ray-plugin
+# https://github.com/teddysun/xray-plugin
 
 PLATFORM=$1
 if [ -z "$PLATFORM" ]; then
@@ -27,7 +28,7 @@ else
             ARCH="arm-unknown-linux-musleabihf"
             ;;
         linux/arm64|linux/arm64/v8)
-            ARCH=""
+            ARCH="aarch64-unknown-linux-musl"
             ;;
         linux/ppc64le)
             ARCH=""
